@@ -1,4 +1,4 @@
-package com.example.connectrpi.model;
+package com.promlert.connectrpi.model;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -9,6 +9,6 @@ public class SetOutputResponse {
     public String errorMessage;
     @SerializedName("error_message_more")
     public String errorMessageMore;
-    @SerializedName("current_state")
+    @SerializedName("state")
     public int currentState;
 }

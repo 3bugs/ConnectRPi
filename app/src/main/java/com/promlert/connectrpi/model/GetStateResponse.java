@@ -1,4 +1,4 @@
-package com.example.connectrpi.model;
+package com.promlert.connectrpi.model;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -13,4 +13,9 @@ public class GetStateResponse {
     public String errorMessageMore;
     @SerializedName("data_list")
     public List<IoPin> ioPinList;
+
+    @SerializedName("temp1")
+    public int temp1;
+    @SerializedName("temp2")
+    public int temp2;
 }

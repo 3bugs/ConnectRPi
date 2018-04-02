@@ -1,4 +1,4 @@
-package com.example.connectrpi.etc;
+package com.promlert.connectrpi.etc;
 
 import android.annotation.SuppressLint;
 import android.content.ContentUris;

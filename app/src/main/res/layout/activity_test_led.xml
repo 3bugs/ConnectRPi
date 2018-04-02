@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.connectrpi.TestLedActivity">
+    tools:context="com.promlert.connectrpi.TestLedActivity">
 
     <TextView
         android:id="@+id/led_1_text_view"

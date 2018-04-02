@@ -16,6 +16,7 @@ define('KEY_DATA_LIST', 'data_list');
 define('ERROR_CODE_SUCCESS', 0);
 define('ERROR_CODE_PARAM_MISSING', 1);
 define('ERROR_CODE_INVALID_ACTION', 2);
+define('ERROR_CODE_ALREADY_ON', 3);
 
 define('BASE_COMMAND', '/usr/local/bin/gpio -g ');
 $response = array();
@@ -26,6 +27,13 @@ $id = array_shift($request);
 
 switch ($action) {
     case 'turn_on':
+        if (input($id) == 1) {
+            $response[KEY_ERROR_CODE] = ERROR_CODE_ALREADY_ON;
+            $response[KEY_ERROR_MESSAGE] = 'This LED is already ON!';
+            $response[KEY_ERROR_MESSAGE_MORE] = '';
+            break;
+        }
+
         output($id, 1);
 
         if (isset($_POST['interval'])) {
@@ -52,21 +60,15 @@ EOT;
         }
 
         $response[KEY_ERROR_CODE] = ERROR_CODE_SUCCESS;
-        //$response[KEY_DATA_LIST] = array();
-
         $pinState = input($id);
-        $response['current_state'] = $pinState;
-
-        //$item = array();
-        //$item['pin_number'] = (int) $id;
-        //$item['state'] = (int) trim($pinState);
-
-        //array_push($response[KEY_DATA_LIST], $item);
+        $response['state'] = $pinState;
         break;
 
     case 'turn_off':
         output($id, 0);
         $response[KEY_ERROR_CODE] = ERROR_CODE_SUCCESS;
+        $pinState = input($id);
+        $response['state'] = $pinState;
         break;
 
     case 'get_state':
@@ -80,7 +82,16 @@ EOT;
             $item['state'] = (int) trim($pinState);
 
             array_push($response[KEY_DATA_LIST], $item);
-        } else {
+        } else if (isset($_POST['pin_numbers'])) {
+            foreach ($_POST['pin_numbers'] as $pinNumber) {
+                $item = array();
+                $item['pin_number'] = (int) $pinNumber;
+                $pinState = input($pinNumber);
+                $item['state'] = (int) trim($pinState);
+
+                array_push($response[KEY_DATA_LIST], $item);
+            }
+        } /*else {
             $pinNumberArray = array(18, 23);
             foreach ($pinNumberArray as $pinNumber) {
                 $item = array();
@@ -90,7 +101,7 @@ EOT;
 
                 array_push($response[KEY_DATA_LIST], $item);
             }
-        }
+        }*/
         break;
 
     default:
@@ -112,7 +123,7 @@ function output($pinNumber, $state) {
 
 function input($pinNumber) {
     $cmd = BASE_COMMAND . " read $pinNumber";
-    return shell_exec($cmd);
+    return (int) trim(shell_exec($cmd));
 }
 
 ?>

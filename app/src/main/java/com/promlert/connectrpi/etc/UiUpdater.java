@@ -1,4 +1,4 @@
-package com.example.connectrpi.etc;
+package com.promlert.connectrpi.etc;
 
 import android.os.Looper;
 import android.os.Handler;
@@ -16,7 +16,7 @@ public class UiUpdater {
     private Handler mHandler = new Handler(Looper.getMainLooper());
 
     private Runnable mStatusChecker;
-    private final int UPDATE_INTERVAL_IN_SECONDS = 5;
+    private final int UPDATE_INTERVAL_IN_SECONDS = 10;
 
     /**
      * Creates an UiUpdater object, that can be used to

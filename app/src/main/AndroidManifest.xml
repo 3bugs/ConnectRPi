@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.example.connectrpi"
+<manifest package="com.promlert.connectrpi"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="com.android.vending.BILLING" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.promlert.connectrpi.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -20,11 +21,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".QrCodeLoginActivity"
+            android:name="com.promlert.connectrpi.QrCodeLoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-            android:name=".RpiControlActivity"
+            android:name="com.promlert.connectrpi.RpiControlActivity"
             android:label="RPi Control">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -33,7 +34,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TestLedActivity"
+            android:name="com.promlert.connectrpi.TestLedActivity"
             android:label="Test LED">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

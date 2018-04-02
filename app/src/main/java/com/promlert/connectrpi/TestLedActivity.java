@@ -1,4 +1,4 @@
-package com.example.connectrpi;
+package com.promlert.connectrpi;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -10,10 +10,10 @@ import android.widget.CompoundButton;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import com.example.connectrpi.etc.Utils;
-import com.example.connectrpi.model.SetOutputResponse;
-import com.example.connectrpi.net.ApiClient;
-import com.example.connectrpi.net.WebServices;
+import com.promlert.connectrpi.etc.Utils;
+import com.promlert.connectrpi.model.SetOutputResponse;
+import com.promlert.connectrpi.net.ApiClient;
+import com.promlert.connectrpi.net.WebServices;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -55,11 +55,11 @@ public class TestLedActivity extends AppCompatActivity
 
         switch (compoundButton.getId()) {
             case R.id.led_1_toggle_button:
-                call = mServices.setOutput(action, 18, 0);
+                call = mServices.turnOnPin(18, 0);
                 call.enqueue(new WebServicesCallback(TestLedActivity.this, null));
                 break;
             case R.id.led_2_toggle_button:
-                call = mServices.setOutput(action, 23, 0);
+                call = mServices.turnOnPin(23, 0);
                 call.enqueue(new WebServicesCallback(TestLedActivity.this, null));
                 break;
         }

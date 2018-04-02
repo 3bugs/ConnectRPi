@@ -1,4 +1,4 @@
-package com.example.connectrpi;
+package com.promlert.connectrpi;
 
 import android.content.Intent;
 import android.os.Bundle;

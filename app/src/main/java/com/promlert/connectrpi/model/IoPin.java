@@ -1,4 +1,4 @@
-package com.example.connectrpi.model;
+package com.promlert.connectrpi.model;
 
 import com.google.gson.annotations.SerializedName;
 
